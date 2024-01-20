@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["commitlint.config.cjs", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "<tsconfigRootDir>/src/App.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
