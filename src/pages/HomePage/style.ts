@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeContainer = styled.div`
     width: 1350px;
     height: calc(100vh - 60px);
-    margin: 60px auto 0;
+    margin: 120px auto 0;
     padding-left: 24px;
 `
 export const Title = styled.p`
@@ -23,4 +23,12 @@ export const CategoriesContainer = styled.div`
     justify-content: space-between;
     margin-bottom: 45px;
     margin-right: 30px;
+`
+export const ProductsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div:nth-child(4n) {
+        margin-right: 0;
+    }
 `

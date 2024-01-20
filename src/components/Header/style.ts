@@ -8,6 +8,10 @@ export const HeaderContainer = styled.div`
 
     display: flex;
     justify-content: space-between;
+
+    position: fixed;
+    left: 0;
+    top: 0;
 `
 export const HeaderLogo = styled.div`
     display: flex;
