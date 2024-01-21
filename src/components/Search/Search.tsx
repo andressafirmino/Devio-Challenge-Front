@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SearchContainer } from "./style";
+import FilteredProducts from "../../utils/FilteredProducts";
+import { ProductContext } from "../../context/products";
 
 export default function Search() {
+    const { products, setProductsList } = useContext(ProductContext)
     const [searchText, setSearchText] = useState("");
 
     const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(e)
+        FilteredProducts(searchText, products, setProductsList);
     };
 
     return (
@@ -15,6 +18,7 @@ export default function Search() {
             <form onSubmit={handleFormSubmit}>
                 <input type="text" placeholder="O que você procura?"
                     onChange={(e) => {
+                        FilteredProducts(e.target.value, products, setProductsList);
                         setSearchText(e.target.value);
                     }}
                     value={searchText} />
