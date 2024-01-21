@@ -6,9 +6,11 @@ import Search from "../../components/Search/Search";
 import { CategoriesContainer, HomeContainer, Loading, ProductsContainer, Subtitle, Title } from "./style";
 import axios from "axios";
 import { ProductContext } from "../../context/products";
+import ProductDetail from "../../components/ ProductDetails/ ProductDetails";
+import { ProductType } from "../../protocols";
 
 export default function HomePage() {
-  const { categories, setCategories, products, setProducts, setSideDishes, productsList } = useContext(ProductContext);
+  const { categories, setCategories, products, setProducts, setSideDishes, productsList, selectedProduct, selected } = useContext(ProductContext);
 
   useEffect(() => {
     const url = `${import.meta.env.VITE_API_URL}/`;
@@ -25,6 +27,9 @@ export default function HomePage() {
   }
   return (
     <HomeContainer>
+      {selected && (
+        <ProductDetail {...selectedProduct as ProductType} />
+      )}
       <Search />
       <Title>Categorias</Title>
       <Subtitle>Navegue por categoria</Subtitle>

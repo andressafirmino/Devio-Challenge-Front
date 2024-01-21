@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { CategoryType, ProductType, SideDishType } from "../protocols";
+import { CategoryType, ProductOrEmpty, ProductType, SideDishType } from "../protocols";
 
 interface ProductContextProps {
     categories: CategoryType[];
@@ -10,6 +10,10 @@ interface ProductContextProps {
     setSideDishes: React.Dispatch<React.SetStateAction<SideDishType[]>>;
     productsList: ProductType[];
     setProductsList: React.Dispatch<React.SetStateAction<ProductType[]>>;
+    selected: boolean;
+    setSelected: React.Dispatch<React.SetStateAction<boolean>>;
+    selectedProduct: ProductOrEmpty;
+    setSelectedProduct: React.Dispatch<React.SetStateAction<ProductOrEmpty>>;
 }
 
 export const ProductContext = createContext<ProductContextProps>({
@@ -21,6 +25,10 @@ export const ProductContext = createContext<ProductContextProps>({
     setSideDishes: () => { },
     productsList: [],
     setProductsList: () => { },
+    selected: false,
+    setSelected: () => { },
+    selectedProduct: {},
+    setSelectedProduct: () => { },
 });
 
 interface ProductProviderProps {
@@ -33,13 +41,16 @@ export default function ProductProvider({ children }: ProductProviderProps) {
     const [products, setProducts] = useState<ProductType[]>([]);
     const [sideDishes, setSideDishes] = useState<SideDishType[]>([]);
     const [productsList, setProductsList] = useState<ProductType[]>([]);
-
+    const [selected, setSelected] = useState<boolean>(false);
+    const [selectedProduct, setSelectedProduct] = useState<ProductOrEmpty>({});
     return (
         <ProductContext.Provider value={{
             categories, setCategories,
             products, setProducts,
             sideDishes, setSideDishes,
-            productsList, setProductsList
+            productsList, setProductsList,
+            selected, setSelected,
+            selectedProduct, setSelectedProduct
         }}>
             {children}
         </ProductContext.Provider>

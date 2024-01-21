@@ -21,3 +21,5 @@ export type SideDishType = {
     image: string
     productId: null
 }
+
+export type ProductOrEmpty = {} | ProductType;
