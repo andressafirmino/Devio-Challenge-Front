@@ -1,5 +1,6 @@
 import { SummaryProps } from "../../protocols";
 import CurrencyConversion from "../../utils/CurrencyConversion";
+import SubtotalCalculation from "../../utils/SubtotalCalculation";
 import { SummaryContainer } from "./style";
 
 export default function Summary(summary: SummaryProps) {
@@ -19,7 +20,7 @@ export default function Summary(summary: SummaryProps) {
             )}
             <div className="dashed-line"></div>
             <p>Total do pedido:</p>
-            <div className="total">{price}</div>
+            <div className="total">{SubtotalCalculation(counter, price, additional)}</div>
         </SummaryContainer>
     )
 }

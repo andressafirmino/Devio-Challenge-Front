@@ -32,11 +32,13 @@ export type AdditionalType = {
     price: number
 }
 
+export type AdditionalOrEmpty = {} | AdditionalType;
+
 export type ProductDescriptionProps = {
     product: ProductType;
     counter: number;
     setCounter: React.Dispatch<React.SetStateAction<number>>;
-  }
+}
 
 export type AdditionalProps = {
     sideDish: SideDishType;
