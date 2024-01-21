@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { CategoryType, ProductOrEmpty, ProductType, SideDishType } from "../protocols";
+import { AdditionalType, CartOrEmpty, CategoryType, ProductOrEmpty, ProductType, SideDishType } from "../protocols";
 
 interface ProductContextProps {
     categories: CategoryType[];
@@ -14,6 +14,13 @@ interface ProductContextProps {
     setSelected: React.Dispatch<React.SetStateAction<boolean>>;
     selectedProduct: ProductOrEmpty;
     setSelectedProduct: React.Dispatch<React.SetStateAction<ProductOrEmpty>>;
+    cartProducts: CartOrEmpty[];
+    setCartProducts: React.Dispatch<React.SetStateAction<CartOrEmpty[]>>;
+    additionalTotal: AdditionalType[];
+    setAdditionalTotal: React.Dispatch<React.SetStateAction<AdditionalType[]>>;
+    total: number;
+    setTotal: React.Dispatch<React.SetStateAction<number>>;
+
 }
 
 export const ProductContext = createContext<ProductContextProps>({
@@ -29,6 +36,12 @@ export const ProductContext = createContext<ProductContextProps>({
     setSelected: () => { },
     selectedProduct: {},
     setSelectedProduct: () => { },
+    cartProducts: [],
+    setCartProducts: () => { },
+    additionalTotal: [],
+    setAdditionalTotal: () => { },
+    total: 0,
+    setTotal: () => { },
 });
 
 interface ProductProviderProps {
@@ -43,6 +56,10 @@ export default function ProductProvider({ children }: ProductProviderProps) {
     const [productsList, setProductsList] = useState<ProductType[]>([]);
     const [selected, setSelected] = useState<boolean>(false);
     const [selectedProduct, setSelectedProduct] = useState<ProductOrEmpty>({});
+    const [cartProducts, setCartProducts] = useState<CartOrEmpty[]>([]);
+    const [additionalTotal, setAdditionalTotal] = useState<AdditionalType[]>([]);
+    const [total, setTotal] = useState<number>(0);
+
     return (
         <ProductContext.Provider value={{
             categories, setCategories,
@@ -50,7 +67,10 @@ export default function ProductProvider({ children }: ProductProviderProps) {
             sideDishes, setSideDishes,
             productsList, setProductsList,
             selected, setSelected,
-            selectedProduct, setSelectedProduct
+            selectedProduct, setSelectedProduct,
+            cartProducts, setCartProducts,
+            additionalTotal, setAdditionalTotal,
+            total, setTotal
         }}>
             {children}
         </ProductContext.Provider>

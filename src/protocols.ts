@@ -51,3 +51,17 @@ export type SummaryProps = {
     product: ProductType;
     counter: number;
 }
+
+export type CartType = {
+    product: {
+        id: number,
+        name: string;
+        image: string;
+        price: number;
+        quantity: number;
+        observation: string;
+    };
+    additional: AdditionalOrEmpty[]
+}
+
+export type CartOrEmpty = {} | CartType;

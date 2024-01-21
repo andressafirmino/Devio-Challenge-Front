@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { AdditionalType, ProductType } from "../../protocols";
-import { AdditionalContainer, ButtonBoxDetails, DetailBox, DetailContainer, ObservationContainer} from "./style";
+import { AdditionalContainer, ButtonBoxDetails, DetailBox, DetailContainer, ObservationContainer } from "./style";
 import { ProductContext } from "../../context/products";
 import ProductDescription from "../ProductDescription/ProductDescription";
 import Additional from "../Additional/Additional";
 import Summary from "../Summary/Summary";
+import AddToCart from "../../utils/AddCart";
 
 export default function ProductDetail(product: ProductType) {
-    const { sideDishes } = useContext(ProductContext);
+    const { sideDishes, cartProducts, setCartProducts, setTotal, additionalTotal, setAdditionalTotal, setSelected } = useContext(ProductContext);
     const [counter, setCounter] = useState(1);
     const [additional, setAdditional] = useState<AdditionalType[]>([]);
     const [observation, setObservation] = useState("");
@@ -28,8 +29,8 @@ export default function ProductDetail(product: ProductType) {
                 </ObservationContainer>
                 <Summary additional={additional} product={product} counter={counter} />
                 <ButtonBoxDetails>
-                    <button>Cancelar</button>
-                    <button>Adicionar ao carrinho</button>
+                    <button onClick={() => setSelected(false)}>Cancelar</button>
+                    <button onClick={() => AddToCart(product, counter, observation, additional, setAdditional, cartProducts, setCartProducts, setTotal, additionalTotal, setAdditionalTotal, setSelected)}>Adicionar ao carrinho</button>
                 </ButtonBoxDetails>
             </DetailBox>
         </DetailContainer>

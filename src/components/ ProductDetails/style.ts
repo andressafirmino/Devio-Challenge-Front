@@ -30,8 +30,8 @@ export const DetailBox = styled.div`
     }
 
     .close {
-        font-size: 30px;
-        font-weight: 500;
+        font-size: 60px;
+        font-weight: 600;
         color: #9f9f9f;
         position: absolute;
         top: 45px;

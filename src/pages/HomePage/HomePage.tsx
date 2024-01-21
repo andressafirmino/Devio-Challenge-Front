@@ -10,7 +10,7 @@ import ProductDetail from "../../components/ ProductDetails/ ProductDetails";
 import { ProductType } from "../../protocols";
 
 export default function HomePage() {
-  const { categories, setCategories, products, setProducts, setSideDishes, productsList, selectedProduct, selected } = useContext(ProductContext);
+  const { categories, setCategories, products, setProducts, setSideDishes, productsList, selectedProduct, selected, cartProducts } = useContext(ProductContext);
 
   useEffect(() => {
     const url = `${import.meta.env.VITE_API_URL}/`;
@@ -25,6 +25,7 @@ export default function HomePage() {
   if (products === undefined || products.length === 0) {
     return <Loading src="https://media.tenor.com/t5DMW5PI8mgAAAAi/loading-green-loading.gif"></Loading>;
   }
+  
   return (
     <HomeContainer>
       {selected && (
