@@ -10,6 +10,7 @@ import ProductDetail from "../../components/ ProductDetails/ ProductDetails";
 import { ProductType } from "../../protocols";
 import Summary from "../../components/Summary/SummaryDetails";
 import SummaryTotal from "../../components/SummaryTotal/SummaryTotal";
+import FinalizeOrder from "../../components/FinalizeOrder/FinalizeOrder";
 
 export default function HomePage() {
   const { categories, setCategories, products, setProducts, setSideDishes, productsList, selectedProduct, selected, cartProducts } = useContext(ProductContext);
@@ -50,6 +51,7 @@ export default function HomePage() {
         )}
       </ProductsContainer>
       <SummaryTotal />
+      <FinalizeOrder />
     </HomeContainer>
   )
 }

@@ -20,7 +20,10 @@ interface ProductContextProps {
     setAdditionalTotal: React.Dispatch<React.SetStateAction<AdditionalType[]>>;
     total: number;
     setTotal: React.Dispatch<React.SetStateAction<number>>;
-
+    disabled: boolean;
+    setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+    finish: boolean;
+    setFinish: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ProductContext = createContext<ProductContextProps>({
@@ -42,6 +45,10 @@ export const ProductContext = createContext<ProductContextProps>({
     setAdditionalTotal: () => { },
     total: 0,
     setTotal: () => { },
+    disabled: true,
+    setDisabled: () => { },
+    finish: false,
+    setFinish: () => { },
 });
 
 interface ProductProviderProps {
@@ -59,6 +66,8 @@ export default function ProductProvider({ children }: ProductProviderProps) {
     const [cartProducts, setCartProducts] = useState<CartOrEmpty[]>([]);
     const [additionalTotal, setAdditionalTotal] = useState<AdditionalType[]>([]);
     const [total, setTotal] = useState<number>(0);
+    const [disabled, setDisabled] = useState<boolean>(false);
+    const [finish, setFinish] = useState<boolean>(false);
 
     return (
         <ProductContext.Provider value={{
@@ -70,7 +79,9 @@ export default function ProductProvider({ children }: ProductProviderProps) {
             selectedProduct, setSelectedProduct,
             cartProducts, setCartProducts,
             additionalTotal, setAdditionalTotal,
-            total, setTotal
+            total, setTotal,
+            disabled, setDisabled,
+            finish, setFinish
         }}>
             {children}
         </ProductContext.Provider>
