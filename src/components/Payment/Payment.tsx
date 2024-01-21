@@ -6,6 +6,7 @@ import SummaryPayment from "../SummaryPayment/SummaryPayment";
 import PaymentMethod from "../PaymentMethod/PaymentMethod";
 import CalculationCashback from "../../utils/CalculationCashback";
 import CanFinish from "../../utils/CanFinish";
+import OrdemCompleted from "../OrderCompleted/OrderCompleted";
 
 export default function Payment() {
     const { total, setTotal, cartProducts, setCartProducts, setAdditionalTotal, setFinish } = useContext(ProductContext);
@@ -26,14 +27,13 @@ export default function Payment() {
         console.log(body)
     }
     useEffect(() => {
-        if (code === "") {
-            setCode(nanoid(6));
-        }
+        if (code === "") setCode(nanoid(6));
         CanFinish({ name, total, cashPayment, paymentMethod, setFinishOrder });
         CalculationCashback({ cashPayment, setCashBack, total });
     }, [name, paymentMethod, cashPayment]);
     return (
         <PaymentContainer>
+            {finishOrder && (<OrdemCompleted/>)}            
             <div className="payment">
                 <WalletIconStyle />
                 <p>Pagamento</p>
