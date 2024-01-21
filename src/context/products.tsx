@@ -8,6 +8,8 @@ interface ProductContextProps {
     setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
     sideDishes: SideDishType[];
     setSideDishes: React.Dispatch<React.SetStateAction<SideDishType[]>>;
+    productsList: ProductType[];
+    setProductsList: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }
 
 export const ProductContext = createContext<ProductContextProps>({
@@ -17,6 +19,8 @@ export const ProductContext = createContext<ProductContextProps>({
     setProducts: () => { },
     sideDishes: [],
     setSideDishes: () => { },
+    productsList: [],
+    setProductsList: () => { },
 });
 
 interface ProductProviderProps {
@@ -28,12 +32,14 @@ export default function ProductProvider({ children }: ProductProviderProps) {
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [products, setProducts] = useState<ProductType[]>([]);
     const [sideDishes, setSideDishes] = useState<SideDishType[]>([]);
+    const [productsList, setProductsList] = useState<ProductType[]>([]);
 
     return (
         <ProductContext.Provider value={{
             categories, setCategories,
             products, setProducts,
-            sideDishes, setSideDishes
+            sideDishes, setSideDishes,
+            productsList, setProductsList
         }}>
             {children}
         </ProductContext.Provider>
