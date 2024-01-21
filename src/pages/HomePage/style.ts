@@ -32,3 +32,8 @@ export const ProductsContainer = styled.div`
         margin-right: 0;
     }
 `
+export const Loading = styled.img `
+    width: 30%; 
+    display: block;
+    margin: 150px auto;
+`
