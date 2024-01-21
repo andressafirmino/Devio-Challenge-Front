@@ -3,7 +3,7 @@ import CurrencyConversion from "../../utils/CurrencyConversion";
 import SubtotalCalculation from "../../utils/SubtotalCalculation";
 import { SummaryContainer } from "./style";
 
-export default function Summary(summary: SummaryProps) {
+export default function SummaryDetails(summary: SummaryProps) {
     const { additional, counter, product } = summary;
     const { name, price } = product;
     return (

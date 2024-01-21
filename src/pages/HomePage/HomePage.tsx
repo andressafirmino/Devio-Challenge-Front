@@ -8,6 +8,8 @@ import axios from "axios";
 import { ProductContext } from "../../context/products";
 import ProductDetail from "../../components/ ProductDetails/ ProductDetails";
 import { ProductType } from "../../protocols";
+import Summary from "../../components/Summary/SummaryDetails";
+import SummaryTotal from "../../components/SummaryTotal/SummaryTotal";
 
 export default function HomePage() {
   const { categories, setCategories, products, setProducts, setSideDishes, productsList, selectedProduct, selected, cartProducts } = useContext(ProductContext);
@@ -25,7 +27,7 @@ export default function HomePage() {
   if (products === undefined || products.length === 0) {
     return <Loading src="https://media.tenor.com/t5DMW5PI8mgAAAAi/loading-green-loading.gif"></Loading>;
   }
-  
+
   return (
     <HomeContainer>
       {selected && (
@@ -47,6 +49,7 @@ export default function HomePage() {
           products.map((prod, i) => <Product key={i} {...prod} />)
         )}
       </ProductsContainer>
+      <SummaryTotal />
     </HomeContainer>
   )
 }

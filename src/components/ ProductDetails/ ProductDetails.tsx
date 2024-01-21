@@ -4,8 +4,8 @@ import { AdditionalContainer, ButtonBoxDetails, DetailBox, DetailContainer, Obse
 import { ProductContext } from "../../context/products";
 import ProductDescription from "../ProductDescription/ProductDescription";
 import Additional from "../Additional/Additional";
-import Summary from "../Summary/Summary";
 import AddToCart from "../../utils/AddCart";
+import SummaryDetails from "../Summary/SummaryDetails";
 
 export default function ProductDetail(product: ProductType) {
     const { sideDishes, cartProducts, setCartProducts, setTotal, additionalTotal, setAdditionalTotal, setSelected } = useContext(ProductContext);
@@ -27,7 +27,7 @@ export default function ProductDetail(product: ProductType) {
                     <h2>Observações</h2>
                     <textarea className="observation-box" placeholder="Adicione uma observação ao pedido" onChange={(e) => setObservation(e.target.value)}></textarea>
                 </ObservationContainer>
-                <Summary additional={additional} product={product} counter={counter} />
+                <SummaryDetails additional={additional} product={product} counter={counter} />
                 <ButtonBoxDetails>
                     <button onClick={() => setSelected(false)}>Cancelar</button>
                     <button onClick={() => AddToCart(product, counter, observation, additional, setAdditional, cartProducts, setCartProducts, setTotal, additionalTotal, setAdditionalTotal, setSelected)}>Adicionar ao carrinho</button>
