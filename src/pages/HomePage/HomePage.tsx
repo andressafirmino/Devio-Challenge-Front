@@ -1,16 +1,14 @@
 /// <reference types="node" />
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Category from "../../components/Category/Category";
 import Product from "../../components/Product/Product";
 import Search from "../../components/Search/Search";
 import { CategoriesContainer, HomeContainer, Loading, ProductsContainer, Subtitle, Title } from "./style";
 import axios from "axios";
-import { CategoryType, ProductType } from "../../protocols";
+import { ProductContext } from "../../context/products";
 
 export default function HomePage() {
-  const [products, setProducts] = useState<ProductType[]>([]);
-  const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [sideDishes, setSideDishes] = useState([]);
+  const { categories, setCategories, products, setProducts, setSideDishes } = useContext(ProductContext);
 
   useEffect(() => {
     const url = `${import.meta.env.VITE_API_URL}/`;
@@ -24,7 +22,7 @@ export default function HomePage() {
   }, []);
   if (products === undefined || products.length === 0) {
     return <Loading src="https://media.tenor.com/t5DMW5PI8mgAAAAi/loading-green-loading.gif"></Loading>;
-}
+  }
   return (
     <HomeContainer>
       <Search />

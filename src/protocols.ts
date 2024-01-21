@@ -12,3 +12,12 @@ export type ProductType = {
     image: string;
     category: string;
 }
+
+export type SideDishType = {
+    id: number;
+    name: string;
+    price: number,
+    description: string;
+    image: string
+    productId: null
+}
