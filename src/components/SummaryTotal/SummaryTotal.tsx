@@ -10,8 +10,8 @@ export default function SummaryTotal() {
         <>
             {cartProducts.length > 0 && (
                 <SummaryContainer>
-                    {cartProducts.map(prod =>
-                        <div className="summary-details">
+                    {cartProducts.map((prod, i) =>
+                        <div className="summary-details" key={i}>
                             <p>{prod.product.quantity}x {prod.product.name}</p>
                             <p>{CurrencyConversion(prod.product.quantity * prod.product.price)}</p>
                         </div>

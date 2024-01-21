@@ -65,3 +65,33 @@ export type CartType = {
 }
 
 export type CartOrEmpty = {} | CartType;
+
+export type SummaryPaymentProps = {
+    name: string;
+    setName: React.Dispatch<React.SetStateAction<string>>;
+    code: string;
+}
+
+export type PaymentMethodProps = {
+    paymentMethod: string[];
+    setPaymentMethod: React.Dispatch<React.SetStateAction<string[]>>;
+    cashPayment: string;
+    setCashPayment: React.Dispatch<React.SetStateAction<string>>;
+    cashback: string;
+}
+
+export type PaymentMoneyProps = Omit<PaymentMethodProps, "paymentMethod" | "setPaymentMethod">;
+
+export type CalculationCashbackProps = {
+    cashPayment: string;
+    setCashBack: React.Dispatch<React.SetStateAction<string>>;
+    total: number;
+}
+
+export type FinishProps = {
+    name: string;
+    total: number;
+    cashPayment: string;
+    paymentMethod: string[];
+    setFinishOrder: React.Dispatch<React.SetStateAction<boolean>>;
+}
