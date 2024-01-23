@@ -11,12 +11,12 @@ import OrdemCompleted from "../OrderCompleted/OrderCompleted";
 export default function Payment() {
     const { total, setTotal, cartProducts, setCartProducts, setAdditionalTotal, setFinish } = useContext(ProductContext);
     const [name, setName] = useState<string>("");
-    const [paymentMethod, setPaymentMethod] = useState<string[]>([]);
+    const [paymentMethod, setPaymentMethod] = useState<string>("");
     const [cashPayment, setCashPayment] = useState<string>("");
     const [cashback, setCashBack] = useState<string>("");
     const [finishOrder, setFinishOrder] = useState<boolean>(false);
     const [code, setCode] = useState<string>("");
-
+console.log(cartProducts)
     function createOrder() {
         const body = {
             name,
@@ -24,7 +24,6 @@ export default function Payment() {
             paymentMethod,
             code: code.toLocaleUpperCase()
         }
-        console.log(body)
     }
     useEffect(() => {
         if (code === "") setCode(nanoid(6));
@@ -46,7 +45,7 @@ export default function Payment() {
             <ButtonPayment>
                 <button className={finishOrder ? "selected" : ""}
                     onClick={() => { setCartProducts([]), setAdditionalTotal([]), setTotal(0), setFinish(false) }}>Cancelar</button>
-                <button className={finishOrder ? "selected" : ""} onClick={createOrder}>Finalizar pedido</button>
+                <button className={finishOrder ? "selected" : ""} onClick={() => createOrder}>Finalizar pedido</button>
             </ButtonPayment>
         </PaymentContainer>
     )

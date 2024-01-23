@@ -7,8 +7,7 @@ import { FaRegCircle } from "react-icons/fa";
 
 export default function Additional({ sideDish, additional, setAdditional }: AdditionalProps) {
     const { id, name, description, image, price } = sideDish;
-    console.log(additional)
-    console.log(name)
+    
     return (
         <AdditionalContainer>
             <div className="additional-image">

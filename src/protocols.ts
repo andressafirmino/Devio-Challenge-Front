@@ -73,8 +73,8 @@ export type SummaryPaymentProps = {
 }
 
 export type PaymentMethodProps = {
-    paymentMethod: string[];
-    setPaymentMethod: React.Dispatch<React.SetStateAction<string[]>>;
+    paymentMethod: string;
+    setPaymentMethod: React.Dispatch<React.SetStateAction<string>>;
     cashPayment: string;
     setCashPayment: React.Dispatch<React.SetStateAction<string>>;
     cashback: string;
@@ -92,6 +92,6 @@ export type FinishProps = {
     name: string;
     total: number;
     cashPayment: string;
-    paymentMethod: string[];
+    paymentMethod: string;
     setFinishOrder: React.Dispatch<React.SetStateAction<boolean>>;
 }
